@@ -13,10 +13,11 @@ before_install:
 matrix:
   include:
   - env: JDK='Oracle JDK 11'
-    install: . ./install-jdk.sh -F 11 -L BCL
+  - install: . ./install-jdk.sh -F 11 -L BCL
 
 script:
   - mvn test -B
   - echo PATH = ${PATH}
   - echo JAVA_HOME = ${JAVA_HOME}
   - java -version
+  - ./mvnw clean install
