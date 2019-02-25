@@ -1,6 +1,7 @@
 language: java
 
 sudo: false
+install: true
 dist: trusty
 
 addons:
@@ -22,6 +23,7 @@ matrix:
   - install: . ./install-jdk.sh -F 11 -L BCL
 
 script:
+  - mvn install
   - mvn test -B
   - echo PATH = ${PATH}
   - echo JAVA_HOME = ${JAVA_HOME}
