@@ -55,12 +55,12 @@
                         <exclude>**/ISellable.java</exclude>
                         <exclude>**/Observable.java</exclude>
                         <exclude>**/Observer.java</exclude>
-                        <exclude>**/Product.java</exclude>
+                        <exclude>**/ObjectList.java</exclude>
                         <exclude>**/Reservor.java</exclude>
-                        <exclude>**/Thing.java</exclude>
+                        <exclude>**/Product.java</exclude>
                         <exclude>**/Main.java</exclude>
-                        <exclude>**/SceneController.java</exclude>
-                        <exclude>**/Reservations.java</exclude>
+                        <exclude>**/Controller.java</exclude>
+                        <exclude>**/Shelter.java</exclude>
                         <exclude>**/WebShop.java</exclude>
                     </excludes>
                 </configuration>
