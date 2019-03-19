@@ -28,7 +28,6 @@
             <version>11.0.2</version>
         </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <!-- Java compiler - Java version 11 -->
