@@ -41,7 +41,6 @@
                     <target>11</target>
                 </configuration>
             </plugin>
-
             <!-- Java Code Coverage with JaCoCo plugin for maven -->
             <plugin>
                 <groupId>org.jacoco</groupId>
