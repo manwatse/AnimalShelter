@@ -67,6 +67,6 @@
          </font>
       </Label>
       <TextField fx:id="tbPrice" layoutX="14.0" layoutY="191.0" prefHeight="31.0" prefWidth="150.0" />
-      <Button fx:id="btBuy" layoutX="533.0" layoutY="290.0" mnemonicParsing="false" text="Buy" />
+      <Button id="reserverBT" fx:id="btBuy" layoutX="533.0" layoutY="290.0" mnemonicParsing="false" onAction="#buyItem" text="Buy" />
    </children>
 </AnchorPane>

@@ -2,15 +2,37 @@ package models;
 
 import enums.ObjectList;
 import interfaces.ISellable;
+
+import javax.persistence.*;
 import java.util.Date;
 
-public abstract class Animal implements ISellable {
 
-    private String name;
-    private Gender gender;
-    private Reservor reservedBy;
-    private ObjectList objectList;
+
+
+@MappedSuperclass
+@Table(name = "animal")
+public abstract class Animal implements ISellable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "Id", updatable = false, nullable = false)
     private int id;
+
+    @Column(name = "Name", updatable = false, nullable = false)
+    private String name;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "Object",length = 8)
+    private ObjectList objectList;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "Gender",length = 8, nullable = true)
+    private Gender gender;
+
+    @Column(name = "Reservor", updatable = true, nullable = true)
+    private String reservor;
+    @Column(name = "Reservordate", updatable = true, nullable = true)
+    private Date reserverDate;
+
 
     Animal (int id, String name, Gender gender, ObjectList object){
         this.name = name;
@@ -20,8 +42,10 @@ public abstract class Animal implements ISellable {
     }
 
     public Boolean reserveIfPossible (String reserveBy){
-        if (reservedBy == null){
-            reservedBy = new Reservor(reserveBy, new Date());
+        if (reservor == null){
+            reservor=reserveBy;
+            reserverDate= new Date();
+
             return true;
         }
         return false;
@@ -33,10 +57,6 @@ public abstract class Animal implements ISellable {
 
     public Gender getGender(){
         return this.gender;
-    }
-
-    public Reservor getReserver(){
-        return this.reservedBy;
     }
 
     public ObjectList getObjectList(){
@@ -51,8 +71,8 @@ public abstract class Animal implements ISellable {
     @Override
     public String toString() {
         String reserved = "not reserved";
-        if (reservedBy != null){
-            reserved = "reserved by " + reservedBy.getReserver();
+        if (reservor != null){
+            reserved = "reserved by " + reservor+"at "+reserverDate;
         }
         return id + ", " + name + ", " + gender.toString() + ", " + reserved;
     }

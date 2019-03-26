@@ -1,15 +1,21 @@
 package models;
 
 import enums.ObjectList;
+import interfaces.ISellable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import java.util.Calendar;
 import java.util.Date;
-
-public class Dog extends Animal {
-
+@Entity(name = "Dog")
+public class Dog extends Animal implements ISellable {
+    @Column(name = "lastwalked")
     private Calendar lastWalked = Calendar.getInstance();
-    private static int totalDogs = 0;
+
     private double price;
+
+    private static int totalDogs = 0;
+
 
     public Dog(int id, String name, Gender gender) {
         super(id, name, gender, ObjectList.DOG);
@@ -36,5 +42,10 @@ public class Dog extends Animal {
     @Override
     public double getPrice() {
         return price;
+    }
+
+    @Override
+    public int getStock() {
+        return 0;
     }
 }

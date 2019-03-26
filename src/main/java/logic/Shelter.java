@@ -1,5 +1,7 @@
 package logic;
 
+import DAL.DAO.CatDAO;
+import DAL.DAO.DogDAO;
 import enums.ObjectList;
 import javafx.beans.InvalidationListener;
 import models.*;
@@ -14,8 +16,16 @@ public class Shelter extends Observable {
         return animals;
     }
 
+    //CatDAO catDAO = new CatDAO();
+    //DogDAO dogDAO = new DogDAO();
+
+
+
     public void newCat(int id, String name, Gender gender, String badHabits) {
         Cat cat = new Cat(id, name, gender, badHabits);
+        System.out.println("new cat");
+        //catDAO.saveObject(cat);
+        System.out.println("new cat");
         animals.add(cat);
         notifyObservers(cat);
     }
@@ -31,6 +41,7 @@ public class Shelter extends Observable {
 
     public void newDog(int id, String name, Gender gender) {
         Dog dog = new Dog(id, name, gender);
+       // dogDAO.saveObject(dog);
         animals.add(dog);
         notifyObservers(dog);
     }

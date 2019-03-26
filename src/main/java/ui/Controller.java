@@ -12,6 +12,7 @@ import models.Animal;
 import models.Gender;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import static javafx.collections.FXCollections.observableArrayList;
@@ -20,6 +21,7 @@ public class Controller implements Initializable {
 
     private Shelter shelter;
     private WebShop webShop;
+    private List<ISellable> totalList;
     private int id = 0;
 
     //region FXML labels
@@ -126,9 +128,7 @@ public class Controller implements Initializable {
             refreshAnimalList();
         } else {
             webShop.addNewProduct(id, nameTB.getText(), Double.parseDouble(tbPrice.getText()));
-            ObservableList<ISellable> items = lvWebShop.getItems();
-            items.clear();
-            items.addAll(webShop.getObjects());
+            refreshWebshop();
         }
         id++;
     }
@@ -178,11 +178,27 @@ public class Controller implements Initializable {
 
     }
 
+    @FXML
+    private  void buyItem(){
+        ISellable item = lvWebShop.getSelectionModel().getSelectedItem();
+        webShop.boughtitem(item);
+        refreshWebshop();
+
+    }
+
     private void refreshAnimalList (){
         ObservableList<Animal> animals = animalsLV.getItems();
+
         animals.clear();
         animals.addAll(shelter.getAnimals());
+        refreshWebshop();
 
+    }
+
+    private  void refreshWebshop(){
+        ObservableList<ISellable> items = lvWebShop.getItems();
+        items.clear();
+        items.addAll(webShop.getObjects());
     }
 
 }

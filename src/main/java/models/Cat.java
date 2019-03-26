@@ -1,8 +1,15 @@
 package models;
 
 import enums.ObjectList;
+import interfaces.ISellable;
 
-public class Cat extends Animal {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
+@Entity(name = "Cat")
+public class Cat extends Animal implements ISellable {
+
+    @Column(name = "badHabbits",nullable = true)
     private String badHabbits;
 
     public Cat(int id, String name, Gender gender, String badHabbits){
@@ -21,5 +28,10 @@ public class Cat extends Animal {
         price = price - badHabbits.length() * 20;
         if (price < 35) return 35;
         return price;
+    }
+
+    @Override
+    public int getStock() {
+        return 0;
     }
 }
