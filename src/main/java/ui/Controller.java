@@ -90,6 +90,7 @@ public class Controller implements Initializable {
         spieciesCB.setItems(observableArrayList(ObjectList.CAT, ObjectList.DOG, ObjectList.ITEM));
         shelter = new Shelter();
         webShop = new WebShop();
+
         shelter.addObserver(webShop);
 
         nameLabel.setVisible(false);

@@ -1,7 +1,6 @@
 package logic;
 
-import DAL.DAO.CatDAO;
-import DAL.DAO.DogDAO;
+
 import enums.ObjectList;
 import javafx.beans.InvalidationListener;
 import models.*;

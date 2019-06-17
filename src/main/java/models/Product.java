@@ -19,7 +19,7 @@ public class Product implements ISellable {
     @Column(name = "Price")
     private double price;
 
-
+    public Product(){};
 
     public Product(int id, String name, double price) {
         this.name = name;

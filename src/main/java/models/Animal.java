@@ -9,11 +9,11 @@ import java.util.Date;
 
 
 
-@MappedSuperclass
+@Entity
 @Table(name = "animal")
 public abstract class Animal implements ISellable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id", updatable = false, nullable = false)
     private int id;
 
@@ -33,6 +33,8 @@ public abstract class Animal implements ISellable {
     @Column(name = "Reservordate", updatable = true, nullable = true)
     private Date reserverDate;
 
+
+    public Animal(){};
 
     Animal (int id, String name, Gender gender, ObjectList object){
         this.name = name;
@@ -72,7 +74,7 @@ public abstract class Animal implements ISellable {
     public String toString() {
         String reserved = "not reserved";
         if (reservor != null){
-            reserved = "reserved by " + reservor+"at "+reserverDate;
+            reserved = "reserved by " + reservor+" at "+reserverDate;
         }
         return id + ", " + name + ", " + gender.toString() + ", " + reserved;
     }

@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 @Entity(name = "Cat")
 public class Cat extends Animal implements ISellable {
 
+    public Cat(){};
+
     @Column(name = "badHabbits",nullable = true)
     private String badHabbits;
 

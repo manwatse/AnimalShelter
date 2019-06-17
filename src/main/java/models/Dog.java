@@ -8,7 +8,11 @@ import javax.persistence.Entity;
 import java.util.Calendar;
 import java.util.Date;
 @Entity(name = "Dog")
+
+
+
 public class Dog extends Animal implements ISellable {
+
     @Column(name = "lastwalked")
     private Calendar lastWalked = Calendar.getInstance();
 
@@ -16,6 +20,8 @@ public class Dog extends Animal implements ISellable {
 
     private static int totalDogs = 0;
 
+
+    public Dog(){};
 
     public Dog(int id, String name, Gender gender) {
         super(id, name, gender, ObjectList.DOG);

@@ -1,6 +1,6 @@
 package logic;
 
-import DAL.DAO.ProductDAO;
+
 import interfaces.ISellable;
 import interfaces.Observer;
 import models.Animal;
